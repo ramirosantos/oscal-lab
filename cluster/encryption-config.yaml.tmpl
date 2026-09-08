@@ -1,0 +1,10 @@
+apiVersion: apiserver.config.k8s.io/v1
+kind: EncryptionConfiguration
+resources:
+  - resources: ["secrets", "configmaps"]
+    providers:
+      - aesgcm:
+          keys:
+            - name: key-2026-08
+              secret: REPLACE_ME_BASE64_32_BYTES
+      - identity: {}

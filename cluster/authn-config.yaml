@@ -1,0 +1,11 @@
+apiVersion: apiserver.config.k8s.io/v1
+kind: AuthenticationConfiguration
+anonymous:
+  enabled: true
+  conditions:
+    - path: /healthz
+    - path: /livez
+    - path: /readyz
+    # kubeadm holt diese ConfigMap beim Join anonym, bevor der Knoten
+    # eine Identitaet hat. Ohne diesen Eintrag: 401 beim "kubeadm join".
+    - path: /api/v1/namespaces/kube-public/configmaps/cluster-info
