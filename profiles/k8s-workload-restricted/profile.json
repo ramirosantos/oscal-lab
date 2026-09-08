@@ -1,0 +1,60 @@
+{
+  "profile": {
+    "uuid": "1a1f4e0c-1d3a-4f4e-9d0e-7b0a2c9f0002",
+    "metadata": {
+      "title": "K8s Workload Restricted (minikube Lab) - Tailoring des Platform Baseline",
+      "last-modified": "2026-08-21T09:00:00Z",
+      "version": "1.0.0",
+      "oscal-version": "1.2.2",
+      "roles": [{ "id": "lab-owner", "title": "Lab Owner / Platform Security Engineering" }],
+      "parties": [{
+        "uuid": "3b7c2e3a-0000-4000-8000-000000000001",
+        "type": "organization",
+        "name": "CyberLab minikube"
+      }],
+      "responsible-parties": [{
+        "role-id": "lab-owner",
+        "party-uuids": ["3b7c2e3a-0000-4000-8000-000000000001"]
+      }]
+    },
+    "imports": [
+      {
+        "href": "trestle://profiles/k8s-platform-baseline/profile.json",
+        "include-controls": [{
+          "with-ids": ["ac-3", "ac-6", "ac-6.10", "au-2", "au-12",
+                       "cm-6", "cm-7", "cm-14",
+                       "sc-7", "sc-8", "sc-8.1", "sc-28", "sc-39",
+                       "si-3", "si-4", "si-7"]
+        }]
+      },
+      {
+        "href": "trestle://catalogs/nist_800_53_rev5/catalog.json",
+        "include-controls": [{
+          "with-ids": ["cm-7.2", "cm-7.5", "sc-7.5", "si-7.1", "ia-5.1"]
+        }]
+      }
+    ],
+    "merge": { "as-is": true },
+    "modify": {
+      "set-parameters": [
+        { "param-id": "cm-07.05_odp.01",
+          "values": ["Container-Images aus dem Docker-Hub-Repository docker.io/cb2dolw mit gueltiger Cosign-Signatur"] },
+        { "param-id": "sc-07.05_odp.01",
+          "values": ["saemtlicher Ingress- und Egress-Verkehr der Workload-Namespaces"] }
+      ],
+      "alters": [{
+        "control-id": "sc-39",
+        "adds": [{
+          "position": "after",
+          "by-id": "sc-39_smt",
+          "parts": [{
+            "id": "sc-39_lab-gdn",
+            "name": "item",
+            "title": "Lab-Ergaenzung",
+            "prose": "Prozessisolation wird durch runAsNonRoot, seccompProfile=RuntimeDefault, Drop ALL Capabilities und readOnlyRootFilesystem auf Pod-Ebene durchgesetzt (Kyverno ValidatingPolicy, PSA restricted)."
+          }]
+        }]
+      }]
+    }
+  }
+}
