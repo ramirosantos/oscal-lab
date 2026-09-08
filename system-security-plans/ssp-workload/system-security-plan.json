@@ -1,0 +1,971 @@
+{
+  "system-security-plan": {
+    "uuid": "de7d711a-6136-4d4f-b9ae-aaf92f989df4",
+    "metadata": {
+      "title": "REPLACE_ME",
+      "last-modified": "2026-09-08T19:54:28.095+00:00",
+      "version": "1.0.0",
+      "oscal-version": "1.2.1"
+    },
+    "import-profile": {
+      "href": "trestle://profiles/k8s-workload-restricted/profile.json"
+    },
+    "system-characteristics": {
+      "system-ids": [
+        {
+          "id": "REPLACE_ME"
+        }
+      ],
+      "system-name": "REPLACE_ME",
+      "description": "REPLACE_ME",
+      "system-information": {
+        "information-types": [
+          {
+            "title": "REPLACE_ME",
+            "description": "REPLACE_ME"
+          }
+        ]
+      },
+      "status": {
+        "state": "operational"
+      },
+      "authorization-boundary": {
+        "description": "REPLACE_ME"
+      }
+    },
+    "system-implementation": {
+      "components": [
+        {
+          "uuid": "c0000001-0000-4000-8000-000000000001",
+          "type": "root='software'",
+          "title": "Kyverno Admission Controller",
+          "description": "Kyverno 1.18 ValidatingPolicy und ImageValidatingPolicy als Admission- und Background-Enforcement.",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "kyv-require-non-root",
+              "remarks": "rule_set_01"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Container muessen als nicht-privilegierter User ohne Privilege-Escalation laufen",
+              "remarks": "rule_set_01"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "require-non-root",
+              "remarks": "rule_set_01"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Kyverno PolicyReport-Ergebnis der ValidatingPolicy require-non-root",
+              "remarks": "rule_set_01"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "kyv-drop-all-caps",
+              "remarks": "rule_set_02"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Alle Linux-Capabilities werden gedroppt, seccompProfile=RuntimeDefault",
+              "remarks": "rule_set_02"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "drop-all-capabilities",
+              "remarks": "rule_set_02"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Kyverno PolicyReport-Ergebnis der ValidatingPolicy drop-all-capabilities",
+              "remarks": "rule_set_02"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "kyv-readonly-rootfs",
+              "remarks": "rule_set_03"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Root-Dateisystem der Container ist read-only",
+              "remarks": "rule_set_03"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "require-ro-rootfs",
+              "remarks": "rule_set_03"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Kyverno PolicyReport-Ergebnis der ValidatingPolicy require-ro-rootfs",
+              "remarks": "rule_set_03"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "kyv-signed-images",
+              "remarks": "rule_set_04"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Nur signierte Images aus docker.io/labuser sind zugelassen",
+              "remarks": "rule_set_04"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "verify-image-signature",
+              "remarks": "rule_set_04"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Kyverno ImageValidatingPolicy verify-image-signature",
+              "remarks": "rule_set_04"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "kyv-resource-limits",
+              "remarks": "rule_set_05"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "CPU- und Memory-Limits sind gesetzt",
+              "remarks": "rule_set_05"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "require-resource-limits",
+              "remarks": "rule_set_05"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Kyverno ValidatingPolicy require-resource-limits",
+              "remarks": "rule_set_05"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "kyv-no-hostpath",
+              "remarks": "rule_set_06"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "hostPath-Volumes, hostNetwork, hostPID und hostIPC sind verboten",
+              "remarks": "rule_set_06"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "disallow-host-namespaces",
+              "remarks": "rule_set_06"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Kyverno ValidatingPolicy disallow-host-namespaces",
+              "remarks": "rule_set_06"
+            }
+          ],
+          "status": {
+            "state": "operational"
+          }
+        },
+        {
+          "uuid": "c0000002-0000-4000-8000-000000000002",
+          "type": "root='software'",
+          "title": "Pod Security Admission",
+          "description": "In-Tree PodSecurity Admission Plugin mit Namespace-Labels.",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "psa-restricted-enforce",
+              "remarks": "rule_set_07"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Namespace erzwingt Pod Security Standard 'restricted'",
+              "remarks": "rule_set_07"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "psa-restricted-label",
+              "remarks": "rule_set_07"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "kubectl-Pruefung des Labels pod-security.kubernetes.io/enforce=restricted",
+              "remarks": "rule_set_07"
+            }
+          ],
+          "status": {
+            "state": "operational"
+          }
+        },
+        {
+          "uuid": "c0000003-0000-4000-8000-000000000003",
+          "type": "root='software'",
+          "title": "Calico CNI",
+          "description": "Calico als CNI mit NetworkPolicy-Enforcement und WireGuard-Transportverschluesselung.",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "net-default-deny",
+              "remarks": "rule_set_08"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Default-Deny NetworkPolicy fuer Ingress und Egress je Workload-Namespace",
+              "remarks": "rule_set_08"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "default-deny-netpol",
+              "remarks": "rule_set_08"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Ergebnis der Kyverno ValidatingPolicy default-deny-netpol im ClusterPolicyReport",
+              "remarks": "rule_set_08"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "net-mtls",
+              "remarks": "rule_set_09"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Ost-West-Verkehr ist per WireGuard verschluesselt",
+              "remarks": "rule_set_09"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "calico-wireguard",
+              "remarks": "rule_set_09"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "FelixConfiguration.spec.wireguardEnabled=true und Annotation projectcalico.org/WireguardPublicKey auf allen k8s-Nodes",
+              "remarks": "rule_set_09"
+            }
+          ],
+          "status": {
+            "state": "operational"
+          }
+        },
+        {
+          "uuid": "c0000004-0000-4000-8000-000000000004",
+          "type": "root='service'",
+          "title": "Kubernetes Control Plane",
+          "description": "kube-apiserver, etcd und Auditing der minikube-Control-Plane.",
+          "props": [
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "api-audit-policy",
+              "remarks": "rule_set_10"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "API-Server Audit-Policy erzeugt Metadata- und Request-Level Events",
+              "remarks": "rule_set_10"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "apiserver-audit-policy",
+              "remarks": "rule_set_10"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Pruefung der kube-apiserver Flags --audit-policy-file und --audit-log-path",
+              "remarks": "rule_set_10"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "api-etcd-encryption",
+              "remarks": "rule_set_11"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Secrets werden at-rest mit AES-256-GCM verschluesselt",
+              "remarks": "rule_set_11"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "apiserver-encryption-config",
+              "remarks": "rule_set_11"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Pruefung EncryptionConfiguration und etcdctl-Stichprobe",
+              "remarks": "rule_set_11"
+            },
+            {
+              "name": "Rule_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "api-anonymous-off",
+              "remarks": "rule_set_12"
+            },
+            {
+              "name": "Rule_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "Anonymer Zugriff ist auf die Health-Endpunkte /healthz, /livez und /readyz beschraenkt",
+              "remarks": "rule_set_12"
+            },
+            {
+              "name": "Check_Id",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "apiserver-anonymous-auth",
+              "remarks": "rule_set_12"
+            },
+            {
+              "name": "Check_Description",
+              "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+              "value": "AuthenticationConfiguration mit anonymous.conditions, referenziert ueber --authentication-config",
+              "remarks": "rule_set_12"
+            }
+          ],
+          "status": {
+            "state": "operational"
+          }
+        },
+        {
+          "uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+          "type": "this-system",
+          "title": "This System",
+          "description": "REPLACE_ME",
+          "status": {
+            "state": "operational"
+          }
+        }
+      ]
+    },
+    "control-implementation": {
+      "description": "This is the control implementation for the system.",
+      "implemented-requirements": [
+        {
+          "uuid": "08717e66-ba29-4f4e-a2dd-ba1f1092dc8f",
+          "control-id": "ac-6",
+          "by-components": [
+            {
+              "component-uuid": "c0000001-0000-4000-8000-000000000001",
+              "uuid": "e77be5c4-c3b5-4594-9de7-a00b3f565fb9",
+              "description": "Least Privilege wird durch Verbot von privileged, allowPrivilegeEscalation und root-UID durchgesetzt.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-require-non-root"
+                },
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-drop-all-caps"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "b8be48fd-f794-413b-a61e-72fe255bea12",
+              "description": "Least Privilege gilt fuer Workloads (Non-Root, keine Capabilities, kein Privilege-Escalation). Fuer menschliche Zugriffe gilt es im Lab NICHT: die minikube-kubeconfig gehoert zur Gruppe system:masters. Diese Abweichung ist bekannt und als POA&M-Item erfasst.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "af519405-407c-4bd9-a3d5-dc853ba90e65",
+          "control-id": "cm-7",
+          "by-components": [
+            {
+              "component-uuid": "c0000001-0000-4000-8000-000000000001",
+              "uuid": "2d642a81-7e45-4a67-88ae-1040acfc35b8",
+              "description": "Least Functionality: hostPath, hostNetwork, hostPID/IPC und nicht benoetigte Capabilities sind blockiert.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-no-hostpath"
+                },
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-drop-all-caps"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "fdac436c-584a-4f31-97f8-db37520338ef",
+              "description": "Nicht benoetigte Funktionen sind deaktiviert: kein hostNetwork, kein hostPath, kein anonymer API-Zugriff, kein Profiling-Endpunkt.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "a557d63a-23e8-4e07-8443-aff03f9da962",
+          "control-id": "cm-7.5",
+          "by-components": [
+            {
+              "component-uuid": "c0000001-0000-4000-8000-000000000001",
+              "uuid": "ef1f69be-e901-4ba6-a898-a34cfaf6986b",
+              "description": "Allow-by-exception: nur signierte Images aus der eigenen Docker-Hub-Organisation.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-signed-images"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "e580a648-113c-4626-99d9-f12c3959f5a3",
+              "description": "Allow-by-exception ueber eine Positivliste signierter Images aus dem eigenen Docker-Hub-Repository.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "6150beac-db0b-410f-a1c2-0896219e94fc",
+          "control-id": "cm-14",
+          "by-components": [
+            {
+              "component-uuid": "c0000001-0000-4000-8000-000000000001",
+              "uuid": "27b0646d-5aa3-45a2-b370-93c988e9fb9c",
+              "description": "Signed Components: Cosign-Signaturpruefung im Admission-Pfad.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-signed-images"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "419b1421-8745-41e1-8c1f-69a15b768a89",
+              "description": "Nur mit Cosign signierte Images werden zugelassen; die Signaturpruefung erfolgt im Admission-Pfad durch eine Kyverno ImageValidatingPolicy.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "76bd6efb-83e6-485f-8ae6-acd7399dd05c",
+          "control-id": "si-7",
+          "by-components": [
+            {
+              "component-uuid": "c0000001-0000-4000-8000-000000000001",
+              "uuid": "991d4295-9167-4c26-9341-02791b9a9df0",
+              "description": "Software-Integritaet ueber Image-Signatur und read-only Root-Dateisystem.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-signed-images"
+                },
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-readonly-rootfs"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "3706b6b2-36f7-4bc1-82bc-d45740f5abef",
+              "description": "Integritaet wird durch cosign-signierte Images, read-only Root-Dateisysteme und den taeglichen Soll-Ist-Vergleich gegen das GitHub-Repository sichergestellt.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "2098acc4-704b-4f66-9401-6e26bd69f6c2",
+          "control-id": "sc-39",
+          "by-components": [
+            {
+              "component-uuid": "c0000001-0000-4000-8000-000000000001",
+              "uuid": "2c8933d4-8438-436f-ba56-9fbc6b99c1a8",
+              "description": "Prozessisolation ueber seccomp, Capability-Drop und Non-Root-Ausfuehrung.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-require-non-root"
+                },
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-drop-all-caps"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "8c228490-3615-4735-9b22-44fc0bdc8fef",
+              "description": "Prozessisolation erfolgt durch getrennte Linux-Namespaces, seccomp RuntimeDefault und Capability-Drop.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "ab2a8fd3-9ec3-41ba-aaa6-5655be121893",
+          "control-id": "si-3",
+          "by-components": [
+            {
+              "component-uuid": "c0000001-0000-4000-8000-000000000001",
+              "uuid": "d0d9efbd-055d-47f7-a012-c418599f4da3",
+              "description": "Ressourcenlimits begrenzen die Wirkung von Cryptominern und DoS durch Schadcode.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "kyv-resource-limits"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "c81d1b9b-2422-4c6b-90f7-9b6ab087814e",
+              "description": "Schadcode-Schutz erfolgt durch Image-Scanning vor dem Push und durch Ressourcenlimits, die die Wirkung eines kompromittierten Containers begrenzen.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "23a4b10e-6df5-4b28-90b1-621ca8438d3a",
+          "control-id": "ac-3",
+          "by-components": [
+            {
+              "component-uuid": "c0000002-0000-4000-8000-000000000002",
+              "uuid": "108b517e-0a9d-42c3-8515-df9c926647c1",
+              "description": "Access Enforcement auf Pod-Spezifikationsebene durch PSS restricted.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "psa-restricted-enforce"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "c0000004-0000-4000-8000-000000000004",
+              "uuid": "d830c678-21a1-460e-b03a-8d0449ae3246",
+              "description": "Access Enforcement durch RBAC am API-Server.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "api-anonymous-off"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "2798ec84-fdd6-4986-8db8-35ae5b692f51",
+              "description": "Zugriffe werden am kube-apiserver durch RBAC und anschliessend durch die Admission-Kette (PodSecurity, Kyverno) erzwungen. Anonymer Zugriff ist per AuthenticationConfiguration auf /healthz, /livez und /readyz beschraenkt.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "e58e4426-4b6c-42e1-a7a0-83ce95e7a9d6",
+          "control-id": "ac-6.10",
+          "by-components": [
+            {
+              "component-uuid": "c0000002-0000-4000-8000-000000000002",
+              "uuid": "a08c9b1b-5b65-4b4e-8278-5f55da6495c1",
+              "description": "Nicht-privilegierte Workloads koennen keine privilegierten Funktionen ausfuehren.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "psa-restricted-enforce"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "436b881b-8d13-4a44-b92b-33fb6a038cc0",
+              "description": "Nicht-privilegierte Workloads koennen keine privilegierten Pods erzeugen; PSA restricted und Kyverno blockieren dies im Admission-Pfad.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "64942a97-67cd-4f83-ab1e-66378f288a16",
+          "control-id": "cm-6",
+          "by-components": [
+            {
+              "component-uuid": "c0000002-0000-4000-8000-000000000002",
+              "uuid": "d857ce68-e7d2-45f8-a2a1-959135ea6c57",
+              "description": "Configuration Settings entsprechen dem Pod Security Standard restricted.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "psa-restricted-enforce"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "8c216852-5baa-4cf0-9b8c-cf798db20ce6",
+              "description": "Konfigurationseinstellungen folgen dem Pod Security Standard restricted. Abweichungen sind ueber die Namespace-Labels sichtbar und messbar.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "7cd007e9-9259-4f81-96a0-86236d1e9cb4",
+          "control-id": "sc-7",
+          "by-components": [
+            {
+              "component-uuid": "c0000003-0000-4000-8000-000000000003",
+              "uuid": "e7296f0f-0488-4907-a331-14e5470e6971",
+              "description": "Boundary Protection durch Namespace-bezogene NetworkPolicies.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "net-default-deny"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "26c2f69d-1d02-40a1-8fc7-0e7609fe8029",
+              "description": "Boundary Protection erfolgt ausschliesslich durch Calico-NetworkPolicies je Namespace. Das Lab-Netz ist flach; es gibt keine Netzsegmentierung, auf die man sich zusaetzlich stuetzen koennte.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "eba32d6c-5054-470d-89b5-dd662ee46efc",
+          "control-id": "sc-7.5",
+          "by-components": [
+            {
+              "component-uuid": "c0000003-0000-4000-8000-000000000003",
+              "uuid": "6812211f-e077-4f7e-8cb3-1436c5f91fbf",
+              "description": "Deny-by-default fuer Ingress und Egress.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "net-default-deny"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "9cbb09d6-ac5a-44b4-8355-cf3cbcd4b750",
+              "description": "Deny-by-default: jeder Workload-Namespace besitzt eine default-deny NetworkPolicy fuer Ingress und Egress.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "7c8c4584-d066-4219-ba0e-ab8c7aa8e68c",
+          "control-id": "sc-8",
+          "by-components": [
+            {
+              "component-uuid": "c0000003-0000-4000-8000-000000000003",
+              "uuid": "1a4d5293-8233-451c-b50b-d473cf6026a5",
+              "description": "Transmission Confidentiality im Cluster-Netz.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "net-mtls"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "13122681-c3e8-4cb8-82df-783cf26ef380",
+              "description": "Der Verkehr zum API-Server ist TLS-geschuetzt; der Pod-zu-Pod-Verkehr zwischen den Nodes ist per Calico-WireGuard verschluesselt.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "6765c44d-bb94-4b25-bba7-f9fb39220f77",
+          "control-id": "sc-8.1",
+          "by-components": [
+            {
+              "component-uuid": "c0000003-0000-4000-8000-000000000003",
+              "uuid": "b484ffac-4b89-4ed4-802a-42563456ed83",
+              "description": "Kryptographischer Schutz des Ost-West-Verkehrs (WireGuard).",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "net-mtls"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "91bc6b65-7422-4a96-bfd5-58b875c56b2a",
+              "description": "Es kommen TLS 1.3 sowie WireGuard (ChaCha20-Poly1305) zum Einsatz.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "5036a98a-c6d0-4c41-9218-1042df332824",
+          "control-id": "au-2",
+          "by-components": [
+            {
+              "component-uuid": "c0000004-0000-4000-8000-000000000004",
+              "uuid": "3668366d-947c-4637-a58a-41da5625e750",
+              "description": "Event Logging ueber die kube-apiserver Audit-Policy.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "api-audit-policy"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "00ce64b2-b21a-41f7-af81-05c3e20fdf97",
+              "description": "Die Audit-Policy des kube-apiserver definiert Metadata-Level fuer lesende und Request-Level fuer schreibende Operationen sowie RequestResponse fuer Secrets, exec und RBAC-Aenderungen.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "18325003-b712-46a3-8130-084b6fa9ecf6",
+          "control-id": "au-12",
+          "by-components": [
+            {
+              "component-uuid": "c0000004-0000-4000-8000-000000000004",
+              "uuid": "d45af6c1-bf8b-47b4-91e1-988533081b5c",
+              "description": "Audit Record Generation auf dem API-Server.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "api-audit-policy"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "b6ab430c-ff3c-4ceb-bbdd-8351a349f306",
+              "description": "Der API-Server erzeugt Audit-Records nach stdout; sie werden je Assessment-Lauf mit kubectl logs abgeholt und im GitHub-Repository archiviert.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "4f10ac5a-09f7-4cca-8918-bd39460958a9",
+          "control-id": "sc-28",
+          "by-components": [
+            {
+              "component-uuid": "c0000004-0000-4000-8000-000000000004",
+              "uuid": "e710d8a9-1453-4cf2-90d3-f7aa137e6a63",
+              "description": "Protection of Information at Rest fuer etcd-Inhalte.",
+              "props": [
+                {
+                  "name": "Rule_Id",
+                  "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                  "value": "api-etcd-encryption"
+                }
+              ],
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "ab59911b-ca0d-49ce-8386-415446d19c4a",
+              "description": "Secrets und ConfigMaps werden per EncryptionConfiguration verschluesselt in etcd abgelegt. Ein externer KMS-Provider ist nicht angebunden (POA&M).",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "08abcf2e-bb18-4fc9-8592-b68ef4c58056",
+          "control-id": "cm-7.2",
+          "by-components": [
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "d0a3b023-77b5-4718-939b-091d399bfe73",
+              "description": "Programmausfuehrung ausserhalb signierter Images wird durch Admission-Control verhindert.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "c9306570-9315-47f8-be2b-eef9083c2e1c",
+          "control-id": "ia-5.1",
+          "by-components": [
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "225099ab-81c2-47b9-bd25-82c830a83548",
+              "description": "Passwortbasierte Authentifizierung am Cluster ist nicht zugelassen; es werden ausschliesslich X.509-Zertifikate und ServiceAccount-Token verwendet.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "dfdc1550-c4d1-49e6-b42a-7a0f466a31b4",
+          "control-id": "si-7.1",
+          "by-components": [
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "4ad4189d-9208-40f6-b90b-e9f120aab012",
+              "description": "Der naechtliche CI-Lauf vergleicht den Cluster-Zustand mit dem GitHub-Repo und meldet Abweichungen als Regression.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "745bd584-33fa-4e07-8b32-14d976618bb7",
+          "control-id": "si-4",
+          "by-components": [
+            {
+              "component-uuid": "b2f29594-6f50-463b-9a27-7923d531c2cd",
+              "uuid": "3ac88a25-afd8-442b-85f4-d68220070b77",
+              "description": "System Monitoring ueber Kyverno PolicyReports und die Audit-Records des API-Servers.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

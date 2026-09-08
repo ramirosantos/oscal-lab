@@ -1,0 +1,67 @@
+ac-3: >-
+  Zugriffe werden am kube-apiserver durch RBAC und anschliessend durch die
+  Admission-Kette (PodSecurity, Kyverno) erzwungen. Anonymer Zugriff ist per
+  AuthenticationConfiguration auf /healthz, /livez und /readyz beschraenkt.
+ac-6: >-
+  Least Privilege gilt fuer Workloads (Non-Root, keine Capabilities, kein
+  Privilege-Escalation). Fuer menschliche Zugriffe gilt es im Lab NICHT: die
+  minikube-kubeconfig gehoert zur Gruppe system:masters. Diese Abweichung ist
+  bekannt und als POA&M-Item erfasst.
+ac-6.10: >-
+  Nicht-privilegierte Workloads koennen keine privilegierten Pods erzeugen;
+  PSA restricted und Kyverno blockieren dies im Admission-Pfad.
+au-2: >-
+  Die Audit-Policy des kube-apiserver definiert Metadata-Level fuer lesende und
+  Request-Level fuer schreibende Operationen sowie RequestResponse fuer Secrets,
+  exec und RBAC-Aenderungen.
+au-12: >-
+  Der API-Server erzeugt Audit-Records nach stdout; sie werden je Assessment-Lauf
+  mit kubectl logs abgeholt und im GitHub-Repository archiviert.
+cm-6: >-
+  Konfigurationseinstellungen folgen dem Pod Security Standard restricted.
+  Abweichungen sind ueber die Namespace-Labels sichtbar und messbar.
+cm-7: >-
+  Nicht benoetigte Funktionen sind deaktiviert: kein hostNetwork, kein hostPath,
+  kein anonymer API-Zugriff, kein Profiling-Endpunkt.
+cm-7.2: >-
+  Programmausfuehrung ausserhalb signierter Images wird durch Admission-Control
+  verhindert.
+cm-7.5: >-
+  Allow-by-exception ueber eine Positivliste signierter Images aus dem eigenen
+  Docker-Hub-Repository.
+cm-14: >-
+  Nur mit Cosign signierte Images werden zugelassen; die Signaturpruefung erfolgt
+  im Admission-Pfad durch eine Kyverno ImageValidatingPolicy.
+ia-5.1: >-
+  Passwortbasierte Authentifizierung am Cluster ist nicht zugelassen; es werden
+  ausschliesslich X.509-Zertifikate und ServiceAccount-Token verwendet.
+sc-7: >-
+  Boundary Protection erfolgt ausschliesslich durch Calico-NetworkPolicies je
+  Namespace. Das Lab-Netz ist flach; es gibt keine Netzsegmentierung, auf die
+  man sich zusaetzlich stuetzen koennte.
+sc-7.5: >-
+  Deny-by-default: jeder Workload-Namespace besitzt eine default-deny
+  NetworkPolicy fuer Ingress und Egress.
+sc-8: >-
+  Der Verkehr zum API-Server ist TLS-geschuetzt; der Pod-zu-Pod-Verkehr zwischen
+  den Nodes ist per Calico-WireGuard verschluesselt.
+sc-8.1: >-
+  Es kommen TLS 1.3 sowie WireGuard (ChaCha20-Poly1305) zum Einsatz.
+sc-28: >-
+  Secrets und ConfigMaps werden per EncryptionConfiguration verschluesselt in
+  etcd abgelegt. Ein externer KMS-Provider ist nicht angebunden (POA&M).
+sc-39: >-
+  Prozessisolation erfolgt durch getrennte Linux-Namespaces, seccomp
+  RuntimeDefault und Capability-Drop.
+si-3: >-
+  Schadcode-Schutz erfolgt durch Image-Scanning vor dem Push und durch
+  Ressourcenlimits, die die Wirkung eines kompromittierten Containers begrenzen.
+si-4: >-
+  System Monitoring ueber Kyverno PolicyReports und die Audit-Records des
+  API-Servers.
+si-7: >-
+  Integritaet wird durch cosign-signierte Images, read-only Root-Dateisysteme und
+  den taeglichen Soll-Ist-Vergleich gegen das GitHub-Repository sichergestellt.
+si-7.1: >-
+  Der naechtliche CI-Lauf vergleicht den Cluster-Zustand mit dem GitHub-Repo und
+  meldet Abweichungen als Regression.

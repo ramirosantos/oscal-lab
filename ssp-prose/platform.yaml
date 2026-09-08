@@ -1,0 +1,12 @@
+ia-2: >-
+  Menschliche Nutzer authentisieren sich per X.509-Client-Zertifikat aus der
+  kubeconfig, technische Identitaeten per ServiceAccount-Token. MFA und eine
+  OIDC-Anbindung sind im Lab NICHT umgesetzt und als POA&M-Item gefuehrt.
+cp-9: >-
+  Der Cluster ist bewusst zustandsarm: die vollstaendige Konfiguration liegt auf
+  GitHub. Zusaetzlich wird taeglich ein etcd-Snapshot erzeugt und im Repository
+  abgelegt.
+cp-10: >-
+  Wiederherstellung erfolgt durch 'minikube delete' und einen vollstaendigen
+  Neuaufbau aus dem GitHub-Repo (make all); der Vorgang wird bei jedem Lab-Reset
+  getestet.
