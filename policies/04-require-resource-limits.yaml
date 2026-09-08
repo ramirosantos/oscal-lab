@@ -1,0 +1,30 @@
+apiVersion: policies.kyverno.io/v1beta1
+kind: ValidatingPolicy
+metadata:
+  name: require-resource-limits
+  annotations:
+    oscal.cyberlab.local/rule-id: kyv-resource-limits
+    oscal.cyberlab.local/controls: "si-3"
+spec:
+  validationActions: [Deny]
+  evaluation:
+    admission:  { enabled: true }
+    background: { enabled: true }
+  matchConstraints:
+    namespaceSelector:
+      matchLabels: { oscal.cyberlab.local/scope: "workload" }
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: >-
+        object.spec.containers.all(c,
+          has(c.resources) && has(c.resources.limits) &&
+          has(c.resources.limits.cpu) && has(c.resources.limits.memory))
+      message: "SI-3: CPU- und Memory-Limits sind Pflicht."
+  autogen:
+    podControllers:
+      controllers: [deployments, statefulsets, daemonsets, jobs, cronjobs]
+

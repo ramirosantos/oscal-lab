@@ -1,0 +1,47 @@
+apiVersion: policies.kyverno.io/v1beta1
+kind: ValidatingPolicy
+metadata:
+  name: drop-all-capabilities
+  annotations:
+    oscal.cyberlab.local/rule-id: kyv-drop-all-caps
+    oscal.cyberlab.local/controls: "ac-6,cm-7,sc-39"
+spec:
+  validationActions: [Deny]
+  failurePolicy: Fail
+  evaluation:
+    admission:  { enabled: true }
+    background: { enabled: true }
+  matchConstraints:
+    namespaceSelector:
+      matchLabels: { oscal.cyberlab.local/scope: "workload" }
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  variables:
+    - name: allContainers
+      expression: >-
+        object.spec.containers +
+        (has(object.spec.initContainers) ? object.spec.initContainers : [])
+  validations:
+    - expression: >-
+        variables.allContainers.all(c,
+          has(c.securityContext) && has(c.securityContext.capabilities) &&
+          has(c.securityContext.capabilities.drop) &&
+          c.securityContext.capabilities.drop.exists(d, d == "ALL"))
+      messageExpression: >-
+        "CM-7: Container in '" + object.metadata.name +
+        "' muessen capabilities.drop=['ALL'] setzen."
+    - expression: >-
+        (has(object.spec.securityContext) &&
+         has(object.spec.securityContext.seccompProfile) &&
+         object.spec.securityContext.seccompProfile.type in ["RuntimeDefault","Localhost"]) ||
+        variables.allContainers.all(c,
+          has(c.securityContext) && has(c.securityContext.seccompProfile) &&
+          c.securityContext.seccompProfile.type in ["RuntimeDefault","Localhost"])
+      message: "SC-39: seccompProfile muss RuntimeDefault oder Localhost sein."
+  autogen:
+    podControllers:
+      controllers: [deployments, statefulsets, daemonsets, jobs, cronjobs]
+

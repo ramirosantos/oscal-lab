@@ -1,0 +1,36 @@
+apiVersion: policies.kyverno.io/v1beta1
+kind: ValidatingPolicy
+metadata:
+  name: default-deny-netpol
+  annotations:
+    oscal.cyberlab.local/rule-id: net-default-deny
+    oscal.cyberlab.local/controls: "sc-7,sc-7.5"
+spec:
+  validationActions: [Audit]        # Audit, damit die Namespace-Erstellung nicht blockiert
+  evaluation:
+    admission:  { enabled: true }
+    background: { enabled: true }   # Background-Scan erzeugt den ClusterPolicyReport
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["namespaces"]
+  # matchConditions steht auf spec-Ebene, NICHT unter matchConstraints -
+  # sonst wird der Block ignoriert und die Policy prueft jeden Namespace.
+  matchConditions:
+    - name: only-workload-namespaces
+      expression: >-
+        has(object.metadata.labels) &&
+        'oscal.cyberlab.local/scope' in object.metadata.labels &&
+        object.metadata.labels['oscal.cyberlab.local/scope'] == 'workload'
+  validations:
+    - expression: >-
+        dyn(resource.List("networking.k8s.io/v1", "networkpolicies", object.metadata.name).items).exists(np,
+          has(np.spec.policyTypes) &&
+          np.spec.policyTypes.exists(t, t == "Ingress") &&
+          np.spec.policyTypes.exists(t, t == "Egress") &&
+          size(np.spec.podSelector) == 0)
+      messageExpression: >-
+        "SC-7(5): Namespace '" + object.metadata.name +
+        "' hat keine default-deny NetworkPolicy fuer Ingress UND Egress."

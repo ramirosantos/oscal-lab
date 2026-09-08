@@ -1,0 +1,35 @@
+apiVersion: policies.kyverno.io/v1beta1
+kind: ValidatingPolicy
+metadata:
+  name: disallow-host-namespaces
+  annotations:
+    oscal.cyberlab.local/rule-id: kyv-no-hostpath
+    oscal.cyberlab.local/controls: "cm-7"
+spec:
+  validationActions: [Deny]
+  failurePolicy: Fail
+  evaluation:
+    admission:  { enabled: true }
+    background: { enabled: true }
+  matchConstraints:
+    namespaceSelector:
+      matchLabels: { oscal.cyberlab.local/scope: "workload" }
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: >-
+        (!has(object.spec.hostNetwork) || object.spec.hostNetwork == false) &&
+        (!has(object.spec.hostPID)     || object.spec.hostPID == false) &&
+        (!has(object.spec.hostIPC)     || object.spec.hostIPC == false)
+      message: "CM-7: hostNetwork, hostPID und hostIPC sind nicht zugelassen."
+    - expression: >-
+        !has(object.spec.volumes) ||
+        object.spec.volumes.all(v, !has(v.hostPath))
+      message: "CM-7: hostPath-Volumes sind nicht zugelassen."
+  autogen:
+    podControllers:
+      controllers: [deployments, statefulsets, daemonsets, jobs, cronjobs]
+

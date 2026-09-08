@@ -1,0 +1,51 @@
+apiVersion: policies.kyverno.io/v1beta1
+kind: ImageValidatingPolicy
+metadata:
+  name: verify-image-signature
+  annotations:
+    oscal.cyberlab.local/rule-id: kyv-signed-images
+    oscal.cyberlab.local/controls: "cm-7.5,cm-14,si-7"
+spec:
+  validationActions: [Deny]
+  failurePolicy: Fail
+  webhookConfiguration:
+    timeoutSeconds: 20
+  evaluation:
+    admission:  { enabled: true }     # explizit: der Negativtest in 21.3 haengt daran
+    background: { enabled: true }
+  matchConstraints:
+    namespaceSelector:
+      matchLabels: { oscal.cyberlab.local/scope: "workload" }
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  matchImageReferences:
+    - glob: "*"
+  attestors:
+    - name: labcosign
+      cosign:
+        key:
+          data: |
+            -----BEGIN PUBLIC KEY-----
+            MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE... (Inhalt Ihrer cosign.pub)
+            -----END PUBLIC KEY-----
+  validationConfigurations:
+    mutateDigest: true                # Tag -> Digest, verhindert Tag-Mutation (SI-7)
+    verifyDigest: true
+    required: true
+  validations:
+    - expression: >-
+        images.containers.map(img,
+          verifyImageSignatures(img, [attestors.labcosign])).all(e, e > 0)
+      message: "CM-14/SI-7: Image-Signatur konnte nicht verifiziert werden."
+    - expression: >-
+        images.containers.all(img,
+          image(img).registry() == "docker.io" &&
+          image(img).repository().startsWith("labuser/"))
+      message: "CM-7(5): Nur Images aus docker.io/labuser sind zugelassen."
+  autogen:
+    podControllers:
+      controllers: [deployments, statefulsets, daemonsets, jobs, cronjobs]
+

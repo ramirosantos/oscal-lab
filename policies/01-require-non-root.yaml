@@ -1,0 +1,59 @@
+apiVersion: policies.kyverno.io/v1beta1
+kind: ValidatingPolicy
+metadata:
+  name: require-non-root
+  annotations:
+    oscal.cyberlab.local/rule-id: kyv-require-non-root
+    oscal.cyberlab.local/controls: "ac-6,sc-39"
+    policies.kyverno.io/severity: high
+spec:
+  validationActions: [Deny]
+  failurePolicy: Fail
+  evaluation:
+    admission:  { enabled: true }
+    background: { enabled: true }
+    mode: Kubernetes
+  matchConstraints:
+    namespaceSelector:
+      matchLabels:
+        oscal.cyberlab.local/scope: "workload"
+    resourceRules:
+      - apiGroups:   [""]
+        apiVersions: ["v1"]
+        operations:  ["CREATE", "UPDATE"]
+        resources:   ["pods"]
+  variables:
+    - name: allContainers
+      expression: >-
+        object.spec.containers +
+        (has(object.spec.initContainers) ? object.spec.initContainers : []) +
+        (has(object.spec.ephemeralContainers) ? object.spec.ephemeralContainers : [])
+    - name: podRunAsNonRoot
+      expression: >-
+        has(object.spec.securityContext) &&
+        has(object.spec.securityContext.runAsNonRoot) &&
+        object.spec.securityContext.runAsNonRoot == true
+  validations:
+    - expression: >-
+        variables.podRunAsNonRoot ||
+        variables.allContainers.all(c,
+          has(c.securityContext) && has(c.securityContext.runAsNonRoot) &&
+          c.securityContext.runAsNonRoot == true)
+      messageExpression: >-
+        "AC-6/SC-39: Pod '" + object.metadata.name +
+        "' muss runAsNonRoot=true setzen (Pod- oder Container-SecurityContext)."
+    - expression: >-
+        variables.allContainers.all(c,
+          !has(c.securityContext) ||
+          !has(c.securityContext.allowPrivilegeEscalation) ||
+          c.securityContext.allowPrivilegeEscalation == false)
+      message: "AC-6: allowPrivilegeEscalation muss false sein."
+    - expression: >-
+        variables.allContainers.all(c,
+          !has(c.securityContext) || !has(c.securityContext.privileged) ||
+          c.securityContext.privileged == false)
+      message: "AC-6: privileged=true ist nicht zugelassen."
+  autogen:
+    podControllers:
+      controllers: [deployments, statefulsets, daemonsets, jobs, cronjobs]
+
