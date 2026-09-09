@@ -1,0 +1,86 @@
+{
+  "assessment-plan": {
+    "uuid": "aa000000-0000-4000-8000-0000000000a1",
+    "metadata": {
+      "title": "Assessment Plan - Kubernetes Workload Baseline (minikube Lab)",
+      "last-modified": "2026-08-21T09:00:00Z",
+      "version": "1.0.0",
+      "oscal-version": "1.2.2",
+      "roles": [
+        { "id": "assessor",     "title": "Independent Assessor" },
+        { "id": "system-owner", "title": "System Owner" }
+      ],
+      "parties": [
+        { "uuid": "3b7c2e3a-0000-4000-8000-000000000002", "type": "organization", "name": "Lab Audit Team" },
+        { "uuid": "3b7c2e3a-0000-4000-8000-000000000001", "type": "organization", "name": "CyberLab minikube" }
+      ],
+      "responsible-parties": [
+        { "role-id": "assessor",     "party-uuids": ["3b7c2e3a-0000-4000-8000-000000000002"] },
+        { "role-id": "system-owner", "party-uuids": ["3b7c2e3a-0000-4000-8000-000000000001"] }
+      ]
+    },
+    "import-ssp": { "href": "trestle://system-security-plans/ssp-workload/system-security-plan.json" },
+    "local-definitions": {
+      "activities": [
+        { "uuid": "ab000000-0000-4000-8000-000000000001",
+          "title": "Kyverno Policy Report Auswertung",
+          "description": "Auslesen aller PolicyReport- und ClusterPolicyReport-Ressourcen und Zuordnung der Ergebnisse zu Rule_Ids der Component Definition.",
+          "props": [{ "name": "method", "value": "TEST" }] },
+        { "uuid": "ab000000-0000-4000-8000-000000000002",
+          "title": "Konfigurationspruefung Control Plane",
+          "description": "Auswertung der kube-apiserver Startparameter, der Audit-Policy und der EncryptionConfiguration.",
+          "props": [{ "name": "method", "value": "EXAMINE" }] },
+        { "uuid": "ab000000-0000-4000-8000-000000000003",
+          "title": "Pruefung der Namespace-Labels",
+          "description": "Abgleich der Pod-Security-Admission-Labels gegen die Vorgabe restricted.",
+          "props": [{ "name": "method", "value": "EXAMINE" }] },
+        { "uuid": "ab000000-0000-4000-8000-000000000004",
+          "title": "Negativtest Admission Control",
+          "description": "Versuchtes Deployment eines privilegierten, unsignierten Containers zur Wirksamkeitspruefung.",
+          "props": [{ "name": "method", "value": "TEST" }] },
+        { "uuid": "ab000000-0000-4000-8000-000000000005",
+          "title": "Netzwerktrennungstest",
+          "description": "Egress-Test aus beiden Workload-Namespaces gegen einen externen Endpunkt.",
+          "props": [{ "name": "method", "value": "TEST" }] },
+        { "uuid": "ab000000-0000-4000-8000-000000000006",
+          "title": "Interview Plattformbetrieb",
+          "description": "Befragung zu Change-, Patch- und Incident-Prozessen.",
+          "props": [{ "name": "method", "value": "INTERVIEW" }] }
+      ]
+    },
+    "reviewed-controls": {
+      "control-selections": [{
+        "description": "Alle Controls des Profils k8s-workload-restricted.",
+        "include-controls": [
+          { "control-id": "ac-3" }, { "control-id": "ac-6" }, { "control-id": "ac-6.10" },
+          { "control-id": "au-2" }, { "control-id": "au-12" },
+          { "control-id": "cm-6" }, { "control-id": "cm-7" }, { "control-id": "cm-7.2" },
+          { "control-id": "cm-7.5" }, { "control-id": "cm-14" }, { "control-id": "ia-5.1" },
+          { "control-id": "sc-7" }, { "control-id": "sc-7.5" }, { "control-id": "sc-8" },
+          { "control-id": "sc-8.1" }, { "control-id": "sc-28" }, { "control-id": "sc-39" },
+          { "control-id": "si-3" }, { "control-id": "si-4" }, { "control-id": "si-7" },
+          { "control-id": "si-7.1" }
+        ]
+      }]
+    },
+    "assessment-subjects": [{
+      "type": "component",
+      "description": "Alle Komponenten des Kubernetes Security Stack.",
+      "include-all": {}
+    }],
+    "tasks": [{
+      "uuid": "ac000000-0000-4000-8000-000000000001",
+      "type": "action",
+      "title": "Automatisierte Evidenzsammlung",
+      "description": "Naechtlicher Lauf, der Policy Reports, Konfigurationsauszuege und Testergebnisse einsammelt.",
+      "associated-activities": [
+        { "activity-uuid": "ab000000-0000-4000-8000-000000000001",
+          "subjects": [{ "type": "component", "include-all": {} }] },
+        { "activity-uuid": "ab000000-0000-4000-8000-000000000002",
+          "subjects": [{ "type": "component", "include-all": {} }] },
+        { "activity-uuid": "ab000000-0000-4000-8000-000000000003",
+          "subjects": [{ "type": "component", "include-all": {} }] }
+      ]
+    }]
+  }
+}

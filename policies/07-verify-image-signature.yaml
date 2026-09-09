@@ -10,6 +10,10 @@ spec:
   failurePolicy: Fail
   webhookConfiguration:
     timeoutSeconds: 20
+  credentials:
+    providers: ["default"]
+    secrets:
+      - dockerhub
   evaluation:
     admission:  { enabled: true }     # explizit: der Negativtest in 21.3 haengt daran
     background: { enabled: true }
@@ -48,4 +52,3 @@ spec:
   autogen:
     podControllers:
       controllers: [deployments, statefulsets, daemonsets, jobs, cronjobs]
-

@@ -1,0 +1,2078 @@
+{
+  "assessment-results": {
+    "uuid": "c2af2b15-f35f-5b4f-b28a-bfc46291066c",
+    "metadata": {
+      "title": "Assessment Results - Kubernetes Workload Baseline (EVE-NG Lab)",
+      "last-modified": "2026-09-08T21:55:09Z",
+      "version": "2026-09-08T21:55:09Z",
+      "oscal-version": "1.2.2",
+      "roles": [
+        {
+          "id": "assessor",
+          "title": "Automated Assessor (CI)"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "091fb65c-1133-5238-b716-8b0a9437b760",
+          "type": "organization",
+          "name": "Lab Audit Team"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "assessor",
+          "party-uuids": [
+            "091fb65c-1133-5238-b716-8b0a9437b760"
+          ]
+        }
+      ]
+    },
+    "import-ap": {
+      "href": "trestle://assessment-plans/k8s-ap/assessment-plan.json"
+    },
+    "results": [
+      {
+        "uuid": "6b351247-d588-5e85-b067-ea83a4e6366a",
+        "title": "Automatisierter Compliance-Lauf",
+        "description": "9 von 18 bewerteten Control/Komponenten-Paaren erfuellt.",
+        "start": "2026-09-08T21:55:09Z",
+        "end": "2026-09-08T21:55:09Z",
+        "reviewed-controls": {
+          "control-selections": [
+            {
+              "description": "Controls des SSP ssp-workload.",
+              "include-controls": [
+                {
+                  "control-id": "ac-6"
+                },
+                {
+                  "control-id": "cm-7"
+                },
+                {
+                  "control-id": "cm-7.5"
+                },
+                {
+                  "control-id": "cm-14"
+                },
+                {
+                  "control-id": "si-7"
+                },
+                {
+                  "control-id": "sc-39"
+                },
+                {
+                  "control-id": "si-3"
+                },
+                {
+                  "control-id": "ac-3"
+                },
+                {
+                  "control-id": "ac-6.10"
+                },
+                {
+                  "control-id": "cm-6"
+                },
+                {
+                  "control-id": "sc-7"
+                },
+                {
+                  "control-id": "sc-7.5"
+                },
+                {
+                  "control-id": "sc-8"
+                },
+                {
+                  "control-id": "sc-8.1"
+                },
+                {
+                  "control-id": "au-2"
+                },
+                {
+                  "control-id": "au-12"
+                },
+                {
+                  "control-id": "sc-28"
+                },
+                {
+                  "control-id": "cm-7.2"
+                },
+                {
+                  "control-id": "ia-5.1"
+                },
+                {
+                  "control-id": "si-7.1"
+                },
+                {
+                  "control-id": "si-4"
+                }
+              ]
+            }
+          ]
+        },
+        "observations": [
+          {
+            "uuid": "8fdc21ee-d133-537e-b08e-75646018fddd",
+            "title": "kyv-no-hostpath :: prod-payments",
+            "description": "Kyverno ValidatingPolicy disallow-host-namespaces",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-no-hostpath"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "disallow-host-namespaces"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "158e53d2-bc71-4525-8dbb-8a7c34ceaef3"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "d8214169-bc0d-5bbf-8275-2186c78c665e",
+                "type": "component",
+                "title": "prod-payments",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/policyreports.json",
+                "description": "success"
+              }
+            ],
+            "collected": "2026-09-08T21:27:14Z"
+          },
+          {
+            "uuid": "44cf807d-24bf-5ba7-b4d5-fac0d15200d4",
+            "title": "kyv-drop-all-caps :: prod-payments",
+            "description": "Kyverno PolicyReport-Ergebnis der ValidatingPolicy drop-all-capabilities",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-drop-all-caps"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "drop-all-capabilities"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "158e53d2-bc71-4525-8dbb-8a7c34ceaef3"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "c7f1d453-117c-5ead-b0ab-25c1e44a1de2",
+                "type": "component",
+                "title": "prod-payments",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/policyreports.json",
+                "description": "success"
+              }
+            ],
+            "collected": "2026-09-08T21:27:14Z"
+          },
+          {
+            "uuid": "91e56e96-a9ad-53c9-9b43-bb43cb6461b8",
+            "title": "kyv-require-non-root :: prod-payments",
+            "description": "Kyverno PolicyReport-Ergebnis der ValidatingPolicy require-non-root",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-require-non-root"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "require-non-root"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "158e53d2-bc71-4525-8dbb-8a7c34ceaef3"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "0ef7553e-db66-5c47-bb44-f8447fec8587",
+                "type": "component",
+                "title": "prod-payments",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/policyreports.json",
+                "description": "success"
+              }
+            ],
+            "collected": "2026-09-08T21:27:14Z"
+          },
+          {
+            "uuid": "f2850b33-21fc-55f0-8390-9f50d070a73a",
+            "title": "kyv-resource-limits :: prod-payments",
+            "description": "Kyverno ValidatingPolicy require-resource-limits",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-resource-limits"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "require-resource-limits"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "158e53d2-bc71-4525-8dbb-8a7c34ceaef3"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3e2a5685-2868-5ae8-a198-65fd17c543b7",
+                "type": "component",
+                "title": "prod-payments",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/policyreports.json",
+                "description": "success"
+              }
+            ],
+            "collected": "2026-09-08T21:27:14Z"
+          },
+          {
+            "uuid": "42f0042c-6825-5fe9-8324-226676461733",
+            "title": "kyv-readonly-rootfs :: prod-payments",
+            "description": "Kyverno PolicyReport-Ergebnis der ValidatingPolicy require-ro-rootfs",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-readonly-rootfs"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "require-ro-rootfs"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "158e53d2-bc71-4525-8dbb-8a7c34ceaef3"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "7b6b9003-a263-5cef-a940-6c36228f2f95",
+                "type": "component",
+                "title": "prod-payments",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/policyreports.json",
+                "description": "success"
+              }
+            ],
+            "collected": "2026-09-08T21:27:14Z"
+          },
+          {
+            "uuid": "b5aa9069-5cf0-58f8-873d-0678ef249f24",
+            "title": "kyv-no-hostpath :: prod-payments",
+            "description": "Kyverno ValidatingPolicy disallow-host-namespaces",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-no-hostpath"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "disallow-host-namespaces"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "5fdf3bb0-48b3-4761-8f0a-30ab4a07d25f"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "b7d0c0d3-9d7d-52d3-b236-2e0d506a3409",
+                "type": "component",
+                "title": "prod-payments",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/policyreports.json",
+                "description": "success"
+              }
+            ],
+            "collected": "2026-09-08T21:27:59Z"
+          },
+          {
+            "uuid": "d55fdd35-1e98-56e5-9192-3c055a8f982d",
+            "title": "kyv-drop-all-caps :: prod-payments",
+            "description": "Kyverno PolicyReport-Ergebnis der ValidatingPolicy drop-all-capabilities",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-drop-all-caps"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "drop-all-capabilities"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "5fdf3bb0-48b3-4761-8f0a-30ab4a07d25f"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "5c77c20c-4467-5082-9f3b-e037203e544c",
+                "type": "component",
+                "title": "prod-payments",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/policyreports.json",
+                "description": "success"
+              }
+            ],
+            "collected": "2026-09-08T21:27:59Z"
+          },
+          {
+            "uuid": "871a819b-4314-5ead-91bb-70cc229037f8",
+            "title": "kyv-require-non-root :: prod-payments",
+            "description": "Kyverno PolicyReport-Ergebnis der ValidatingPolicy require-non-root",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-require-non-root"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "require-non-root"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "5fdf3bb0-48b3-4761-8f0a-30ab4a07d25f"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "e2a6faaa-b746-5e5e-a908-beb7f414eed1",
+                "type": "component",
+                "title": "prod-payments",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/policyreports.json",
+                "description": "success"
+              }
+            ],
+            "collected": "2026-09-08T21:27:59Z"
+          },
+          {
+            "uuid": "36c93c08-1f64-5506-8fcf-ab52d262502c",
+            "title": "kyv-resource-limits :: prod-payments",
+            "description": "Kyverno ValidatingPolicy require-resource-limits",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-resource-limits"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "require-resource-limits"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "5fdf3bb0-48b3-4761-8f0a-30ab4a07d25f"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "e1e11345-e68d-5c2b-a555-fbcdaef19937",
+                "type": "component",
+                "title": "prod-payments",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/policyreports.json",
+                "description": "success"
+              }
+            ],
+            "collected": "2026-09-08T21:27:59Z"
+          },
+          {
+            "uuid": "5086cb3b-6ecc-55e2-bb55-d9ff2f62383e",
+            "title": "kyv-readonly-rootfs :: prod-payments",
+            "description": "Kyverno PolicyReport-Ergebnis der ValidatingPolicy require-ro-rootfs",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-readonly-rootfs"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "require-ro-rootfs"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "5fdf3bb0-48b3-4761-8f0a-30ab4a07d25f"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "9ca3699b-f47c-50c9-a74f-4691b59b1a15",
+                "type": "component",
+                "title": "prod-payments",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/policyreports.json",
+                "description": "success"
+              }
+            ],
+            "collected": "2026-09-08T21:27:59Z"
+          },
+          {
+            "uuid": "dc194c6e-f740-5d91-9606-636f99be5ef1",
+            "title": "net-default-deny :: cluster",
+            "description": "Ergebnis der Kyverno ValidatingPolicy default-deny-netpol im ClusterPolicyReport",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "net-default-deny"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "default-deny-netpol"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "skip"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "5ee30e65-c8bf-4343-a3ac-26bd8c4702cc"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "95a932ef-44b0-54e9-b5cc-029a8eac78a5",
+                "type": "component",
+                "title": "cluster",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "cluster"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/clusterpolicyreports.json",
+                "description": "skip"
+              }
+            ],
+            "collected": "2026-09-08T21:26:37Z"
+          },
+          {
+            "uuid": "3a6aa461-9b7e-5a36-b748-5deee5867fb3",
+            "title": "net-default-deny :: cluster",
+            "description": "Ergebnis der Kyverno ValidatingPolicy default-deny-netpol im ClusterPolicyReport",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "net-default-deny"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "default-deny-netpol"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "fail"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "697822b0-e4fa-4f6f-acd8-e7fcbfe77eb7"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "e8fb9d22-40a0-5375-941b-0eca17a061d8",
+                "type": "component",
+                "title": "cluster",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "cluster"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/clusterpolicyreports.json",
+                "description": "SC-7(5): Namespace 'prod-payments' hat keine default-deny NetworkPolicy fuer Ingress UND Egress."
+              }
+            ],
+            "collected": "2026-09-08T21:26:37Z"
+          },
+          {
+            "uuid": "8c8074a9-6f0b-51d4-8bd1-e0bc889dbdeb",
+            "title": "net-default-deny :: cluster",
+            "description": "Ergebnis der Kyverno ValidatingPolicy default-deny-netpol im ClusterPolicyReport",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "net-default-deny"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "default-deny-netpol"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "fail"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "820baced-beec-4ce8-abc4-c294af72eb90"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "cab1a4b7-e695-5163-a3db-ed2d9db416d2",
+                "type": "component",
+                "title": "cluster",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "cluster"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/clusterpolicyreports.json",
+                "description": "SC-7(5): Namespace 'prod-batch' hat keine default-deny NetworkPolicy fuer Ingress UND Egress."
+              }
+            ],
+            "collected": "2026-09-08T21:26:37Z"
+          },
+          {
+            "uuid": "4851424b-6352-5867-bbf2-a29a58be946a",
+            "title": "psa-restricted-enforce :: prod-batch/Namespace",
+            "description": "kubectl-Pruefung des Labels pod-security.kubernetes.io/enforce=restricted",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "psa-restricted-enforce"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "psa-restricted-label"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "fail"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "kubectl-checks"
+              }
+            ],
+            "methods": [
+              "EXAMINE"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "50c3933c-f387-5c05-aef0-43fe64bdfef4",
+                "type": "component",
+                "title": "prod-batch/Namespace",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-batch/Namespace"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/manual-checks.json",
+                "description": "pod-security.kubernetes.io/enforce=privileged statt restricted"
+              }
+            ],
+            "collected": "2026-09-08T21:44:16Z"
+          },
+          {
+            "uuid": "194fff6e-6922-510c-a369-4c84fab7cf21",
+            "title": "psa-restricted-enforce :: prod-payments/Namespace",
+            "description": "kubectl-Pruefung des Labels pod-security.kubernetes.io/enforce=restricted",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "psa-restricted-enforce"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "psa-restricted-label"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "kubectl-checks"
+              }
+            ],
+            "methods": [
+              "EXAMINE"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "ddd83566-bf81-5186-8543-06ba66add4cb",
+                "type": "component",
+                "title": "prod-payments/Namespace",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "prod-payments/Namespace"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/manual-checks.json",
+                "description": "pod-security.kubernetes.io/enforce=restricted gesetzt"
+              }
+            ],
+            "collected": "2026-09-08T21:44:16Z"
+          },
+          {
+            "uuid": "4edb2361-ed34-5426-bee1-9d60819785dc",
+            "title": "net-mtls :: cluster/Calico",
+            "description": "FelixConfiguration.spec.wireguardEnabled=true und Annotation projectcalico.org/WireguardPublicKey auf allen k8s-Nodes",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "net-mtls"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "calico-wireguard"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "node-annotations"
+              }
+            ],
+            "methods": [
+              "TEST"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "abb2cde0-fe5c-5cc0-8f18-0c3382c0cad0",
+                "type": "component",
+                "title": "cluster/Calico",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "cluster/Calico"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/manual-checks.json",
+                "description": "wireguardEnabled=true, Annotation projectcalico.org/WireguardPublicKey auf 2/2 Nodes"
+              }
+            ],
+            "collected": "2026-09-08T21:44:16Z"
+          },
+          {
+            "uuid": "8a6a8957-9470-5449-ab39-5ce16c205a85",
+            "title": "kyv-signed-images :: cluster/Kyverno",
+            "description": "Kyverno ImageValidatingPolicy verify-image-signature",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "kyv-signed-images"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "verify-image-signature"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "fail"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "manual-check"
+              }
+            ],
+            "methods": [
+              "EXAMINE"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "3effb2c1-a245-5394-afa5-88426f746456",
+                "type": "component",
+                "title": "cluster/Kyverno",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "cluster/Kyverno"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/manual-checks.json",
+                "description": "Policy verify-image-signature nicht aktiv - Docker-Hub-Registry-Authentifizierung ungeloest (POA&M)"
+              }
+            ],
+            "collected": "2026-09-08T21:44:16Z"
+          },
+          {
+            "uuid": "cdce88e9-355e-549c-8c00-35293fc107d5",
+            "title": "api-audit-policy :: minikube/kube-apiserver",
+            "description": "Pruefung der kube-apiserver Flags --audit-policy-file und --audit-log-path",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "api-audit-policy"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "apiserver-audit-policy"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "kubectl-apiserver-flags"
+              }
+            ],
+            "methods": [
+              "EXAMINE"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "317c5943-b66c-58c3-9514-fa162f9f6b23",
+                "type": "component",
+                "title": "minikube/kube-apiserver",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "minikube/kube-apiserver"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/manual-checks.json",
+                "description": "--audit-policy-file und --audit-log-path gesetzt"
+              }
+            ],
+            "collected": "2026-09-08T21:44:16Z"
+          },
+          {
+            "uuid": "cf664b83-3d39-5494-be49-0cecd436073b",
+            "title": "api-etcd-encryption :: minikube/kube-apiserver",
+            "description": "Pruefung EncryptionConfiguration und etcdctl-Stichprobe",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "api-etcd-encryption"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "apiserver-encryption-config"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "pass"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "kubectl-apiserver-flags"
+              }
+            ],
+            "methods": [
+              "EXAMINE"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "1c8eff79-4f0f-5f1b-b537-74c652332d8b",
+                "type": "component",
+                "title": "minikube/kube-apiserver",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "minikube/kube-apiserver"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/manual-checks.json",
+                "description": "--encryption-provider-config gesetzt"
+              }
+            ],
+            "collected": "2026-09-08T21:44:16Z"
+          },
+          {
+            "uuid": "c6674ad5-5310-5a1b-9139-ff39353c0971",
+            "title": "api-anonymous-off :: minikube/kube-apiserver",
+            "description": "AuthenticationConfiguration mit anonymous.conditions, referenziert ueber --authentication-config",
+            "props": [
+              {
+                "name": "Rule_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "api-anonymous-off"
+              },
+              {
+                "name": "Check_Id",
+                "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                "value": "apiserver-anonymous-auth"
+              },
+              {
+                "name": "result",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "fail"
+              },
+              {
+                "name": "assessment-source",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "kubectl-apiserver-flags"
+              }
+            ],
+            "methods": [
+              "EXAMINE"
+            ],
+            "types": [
+              "control-objective"
+            ],
+            "subjects": [
+              {
+                "subject-uuid": "6e070a25-da56-5709-abb7-4b53bc29c856",
+                "type": "component",
+                "title": "minikube/kube-apiserver",
+                "props": [
+                  {
+                    "name": "resource",
+                    "ns": "https://cyberlab.local/ns/oscal",
+                    "value": "minikube/kube-apiserver"
+                  }
+                ]
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "href": "file:///home/labuser/oscal-lab/evidence/manual-checks.json",
+                "description": "AuthenticationConfiguration ohne Pfad-Bedingungen - anonymer Zugriff unbeschraenkt"
+              }
+            ],
+            "collected": "2026-09-08T21:44:16Z"
+          }
+        ],
+        "risks": [
+          {
+            "uuid": "d513349e-45bc-568f-9365-4221715ec9f8",
+            "title": "Control SC-7 nicht erfuellt (Calico CNI)",
+            "description": ": SC-7(5): Namespace 'prod-payments' hat keine default-deny NetworkPolicy fuer Ingress UND Egress.; : SC-7(5): Namespace 'prod-batch' hat keine default-deny NetworkPolicy fuer Ingress UND Egress.",
+            "statement": "Die Umsetzung von SC-7 durch Calico CNI wurde als nicht wirksam bewertet.",
+            "props": [
+              {
+                "name": "severity",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "moderate"
+              }
+            ],
+            "status": "open",
+            "related-observations": [
+              {
+                "observation-uuid": "dc194c6e-f740-5d91-9606-636f99be5ef1"
+              },
+              {
+                "observation-uuid": "3a6aa461-9b7e-5a36-b748-5deee5867fb3"
+              },
+              {
+                "observation-uuid": "8c8074a9-6f0b-51d4-8bd1-e0bc889dbdeb"
+              }
+            ]
+          },
+          {
+            "uuid": "547a1645-8f27-56b4-ae3f-6618a8b0858d",
+            "title": "Control SC-7.5 nicht erfuellt (Calico CNI)",
+            "description": ": SC-7(5): Namespace 'prod-payments' hat keine default-deny NetworkPolicy fuer Ingress UND Egress.; : SC-7(5): Namespace 'prod-batch' hat keine default-deny NetworkPolicy fuer Ingress UND Egress.",
+            "statement": "Die Umsetzung von SC-7.5 durch Calico CNI wurde als nicht wirksam bewertet.",
+            "props": [
+              {
+                "name": "severity",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "moderate"
+              }
+            ],
+            "status": "open",
+            "related-observations": [
+              {
+                "observation-uuid": "dc194c6e-f740-5d91-9606-636f99be5ef1"
+              },
+              {
+                "observation-uuid": "3a6aa461-9b7e-5a36-b748-5deee5867fb3"
+              },
+              {
+                "observation-uuid": "8c8074a9-6f0b-51d4-8bd1-e0bc889dbdeb"
+              }
+            ]
+          },
+          {
+            "uuid": "6f599a7c-fb0d-5748-aa21-1e0f63b55a3f",
+            "title": "Control AC-3 nicht erfuellt (Kubernetes Control Plane)",
+            "description": "minikube/kube-apiserver: AuthenticationConfiguration ohne Pfad-Bedingungen - anonymer Zugriff unbeschraenkt",
+            "statement": "Die Umsetzung von AC-3 durch Kubernetes Control Plane wurde als nicht wirksam bewertet.",
+            "props": [
+              {
+                "name": "severity",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "moderate"
+              }
+            ],
+            "status": "open",
+            "related-observations": [
+              {
+                "observation-uuid": "c6674ad5-5310-5a1b-9139-ff39353c0971"
+              }
+            ]
+          },
+          {
+            "uuid": "cf8caeee-3886-5679-8b51-347ac1f8a081",
+            "title": "Control CM-14 nicht erfuellt (Kyverno Admission Controller)",
+            "description": "cluster/Kyverno: Policy verify-image-signature nicht aktiv - Docker-Hub-Registry-Authentifizierung ungeloest (POA&M)",
+            "statement": "Die Umsetzung von CM-14 durch Kyverno Admission Controller wurde als nicht wirksam bewertet.",
+            "props": [
+              {
+                "name": "severity",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "high"
+              }
+            ],
+            "status": "open",
+            "related-observations": [
+              {
+                "observation-uuid": "8a6a8957-9470-5449-ab39-5ce16c205a85"
+              }
+            ]
+          },
+          {
+            "uuid": "30031adb-b80f-53a6-8e7a-8ab3c3a1d6db",
+            "title": "Control CM-7.5 nicht erfuellt (Kyverno Admission Controller)",
+            "description": "cluster/Kyverno: Policy verify-image-signature nicht aktiv - Docker-Hub-Registry-Authentifizierung ungeloest (POA&M)",
+            "statement": "Die Umsetzung von CM-7.5 durch Kyverno Admission Controller wurde als nicht wirksam bewertet.",
+            "props": [
+              {
+                "name": "severity",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "moderate"
+              }
+            ],
+            "status": "open",
+            "related-observations": [
+              {
+                "observation-uuid": "8a6a8957-9470-5449-ab39-5ce16c205a85"
+              }
+            ]
+          },
+          {
+            "uuid": "a7deb8a7-94fb-5c43-b011-d1a7dba721d5",
+            "title": "Control SI-7 nicht erfuellt (Kyverno Admission Controller)",
+            "description": "cluster/Kyverno: Policy verify-image-signature nicht aktiv - Docker-Hub-Registry-Authentifizierung ungeloest (POA&M)",
+            "statement": "Die Umsetzung von SI-7 durch Kyverno Admission Controller wurde als nicht wirksam bewertet.",
+            "props": [
+              {
+                "name": "severity",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "high"
+              }
+            ],
+            "status": "open",
+            "related-observations": [
+              {
+                "observation-uuid": "42f0042c-6825-5fe9-8324-226676461733"
+              },
+              {
+                "observation-uuid": "5086cb3b-6ecc-55e2-bb55-d9ff2f62383e"
+              },
+              {
+                "observation-uuid": "8a6a8957-9470-5449-ab39-5ce16c205a85"
+              }
+            ]
+          },
+          {
+            "uuid": "c58e09ff-c528-5107-9b3a-76900f0ebe62",
+            "title": "Control AC-3 nicht erfuellt (Pod Security Admission)",
+            "description": "prod-batch/Namespace: pod-security.kubernetes.io/enforce=privileged statt restricted",
+            "statement": "Die Umsetzung von AC-3 durch Pod Security Admission wurde als nicht wirksam bewertet.",
+            "props": [
+              {
+                "name": "severity",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "moderate"
+              }
+            ],
+            "status": "open",
+            "related-observations": [
+              {
+                "observation-uuid": "4851424b-6352-5867-bbf2-a29a58be946a"
+              },
+              {
+                "observation-uuid": "194fff6e-6922-510c-a369-4c84fab7cf21"
+              }
+            ]
+          },
+          {
+            "uuid": "3249255c-e845-505f-a5db-27299028776d",
+            "title": "Control AC-6.10 nicht erfuellt (Pod Security Admission)",
+            "description": "prod-batch/Namespace: pod-security.kubernetes.io/enforce=privileged statt restricted",
+            "statement": "Die Umsetzung von AC-6.10 durch Pod Security Admission wurde als nicht wirksam bewertet.",
+            "props": [
+              {
+                "name": "severity",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "moderate"
+              }
+            ],
+            "status": "open",
+            "related-observations": [
+              {
+                "observation-uuid": "4851424b-6352-5867-bbf2-a29a58be946a"
+              },
+              {
+                "observation-uuid": "194fff6e-6922-510c-a369-4c84fab7cf21"
+              }
+            ]
+          },
+          {
+            "uuid": "7776fa8b-aa16-57d8-86d2-98bd1424d881",
+            "title": "Control CM-6 nicht erfuellt (Pod Security Admission)",
+            "description": "prod-batch/Namespace: pod-security.kubernetes.io/enforce=privileged statt restricted",
+            "statement": "Die Umsetzung von CM-6 durch Pod Security Admission wurde als nicht wirksam bewertet.",
+            "props": [
+              {
+                "name": "severity",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "moderate"
+              }
+            ],
+            "status": "open",
+            "related-observations": [
+              {
+                "observation-uuid": "4851424b-6352-5867-bbf2-a29a58be946a"
+              },
+              {
+                "observation-uuid": "194fff6e-6922-510c-a369-4c84fab7cf21"
+              }
+            ]
+          }
+        ],
+        "findings": [
+          {
+            "uuid": "995c58c1-91c4-5bbf-a226-7aaa97153bdd",
+            "title": "sc-7 :: Calico CNI",
+            "description": "Fehlgeschlagene Rules: net-default-deny",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Calico CNI"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "sc-7_obj",
+              "description": "Assessment Objective zu SC-7",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "sc-7"
+                }
+              ],
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "dc194c6e-f740-5d91-9606-636f99be5ef1"
+              },
+              {
+                "observation-uuid": "3a6aa461-9b7e-5a36-b748-5deee5867fb3"
+              },
+              {
+                "observation-uuid": "8c8074a9-6f0b-51d4-8bd1-e0bc889dbdeb"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "d513349e-45bc-568f-9365-4221715ec9f8"
+              }
+            ]
+          },
+          {
+            "uuid": "b20db8e7-debb-5d24-99ad-d3c9d20c8b1b",
+            "title": "sc-7.5 :: Calico CNI",
+            "description": "Fehlgeschlagene Rules: net-default-deny",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Calico CNI"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "sc-7.5_obj",
+              "description": "Assessment Objective zu SC-7.5",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "sc-7.5"
+                }
+              ],
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "dc194c6e-f740-5d91-9606-636f99be5ef1"
+              },
+              {
+                "observation-uuid": "3a6aa461-9b7e-5a36-b748-5deee5867fb3"
+              },
+              {
+                "observation-uuid": "8c8074a9-6f0b-51d4-8bd1-e0bc889dbdeb"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "547a1645-8f27-56b4-ae3f-6618a8b0858d"
+              }
+            ]
+          },
+          {
+            "uuid": "9cbaacc6-43c0-5a2b-9369-01fb0174db81",
+            "title": "sc-8 :: Calico CNI",
+            "description": "Alle Rules bestanden: net-mtls",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Calico CNI"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "sc-8_obj",
+              "description": "Assessment Objective zu SC-8",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "sc-8"
+                }
+              ],
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "4edb2361-ed34-5426-bee1-9d60819785dc"
+              }
+            ]
+          },
+          {
+            "uuid": "c856312c-18be-514b-84eb-e1dec8081152",
+            "title": "sc-8.1 :: Calico CNI",
+            "description": "Alle Rules bestanden: net-mtls",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Calico CNI"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "sc-8.1_obj",
+              "description": "Assessment Objective zu SC-8.1",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "sc-8.1"
+                }
+              ],
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "4edb2361-ed34-5426-bee1-9d60819785dc"
+              }
+            ]
+          },
+          {
+            "uuid": "d4a02001-6103-5c9b-83f7-cdaacc2041b2",
+            "title": "ac-3 :: Kubernetes Control Plane",
+            "description": "Fehlgeschlagene Rules: api-anonymous-off",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kubernetes Control Plane"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "ac-3_obj",
+              "description": "Assessment Objective zu AC-3",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "ac-3"
+                }
+              ],
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "c6674ad5-5310-5a1b-9139-ff39353c0971"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "6f599a7c-fb0d-5748-aa21-1e0f63b55a3f"
+              }
+            ]
+          },
+          {
+            "uuid": "2456ebf8-61ca-5514-af75-a70ce5cd197d",
+            "title": "au-12 :: Kubernetes Control Plane",
+            "description": "Alle Rules bestanden: api-audit-policy",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kubernetes Control Plane"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "au-12_obj",
+              "description": "Assessment Objective zu AU-12",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "au-12"
+                }
+              ],
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "cdce88e9-355e-549c-8c00-35293fc107d5"
+              }
+            ]
+          },
+          {
+            "uuid": "b4771582-2e0f-5444-b61d-19ba948b8b47",
+            "title": "au-2 :: Kubernetes Control Plane",
+            "description": "Alle Rules bestanden: api-audit-policy",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kubernetes Control Plane"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "au-2_obj",
+              "description": "Assessment Objective zu AU-2",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "au-2"
+                }
+              ],
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "cdce88e9-355e-549c-8c00-35293fc107d5"
+              }
+            ]
+          },
+          {
+            "uuid": "9dc11215-71a8-5334-9e04-200a022a3efb",
+            "title": "sc-28 :: Kubernetes Control Plane",
+            "description": "Alle Rules bestanden: api-etcd-encryption",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kubernetes Control Plane"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "sc-28_obj",
+              "description": "Assessment Objective zu SC-28",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "sc-28"
+                }
+              ],
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "cf664b83-3d39-5494-be49-0cecd436073b"
+              }
+            ]
+          },
+          {
+            "uuid": "dd5b93a2-29fb-5993-bfd8-8bcfb272bfc6",
+            "title": "ac-6 :: Kyverno Admission Controller",
+            "description": "Alle Rules bestanden: kyv-drop-all-caps, kyv-require-non-root",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kyverno Admission Controller"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "ac-6_obj",
+              "description": "Assessment Objective zu AC-6",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "ac-6"
+                }
+              ],
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "44cf807d-24bf-5ba7-b4d5-fac0d15200d4"
+              },
+              {
+                "observation-uuid": "d55fdd35-1e98-56e5-9192-3c055a8f982d"
+              },
+              {
+                "observation-uuid": "91e56e96-a9ad-53c9-9b43-bb43cb6461b8"
+              },
+              {
+                "observation-uuid": "871a819b-4314-5ead-91bb-70cc229037f8"
+              }
+            ]
+          },
+          {
+            "uuid": "334023d3-b152-53de-9fd5-f8b2b331b874",
+            "title": "cm-14 :: Kyverno Admission Controller",
+            "description": "Fehlgeschlagene Rules: kyv-signed-images",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kyverno Admission Controller"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "cm-14_obj",
+              "description": "Assessment Objective zu CM-14",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "cm-14"
+                }
+              ],
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "8a6a8957-9470-5449-ab39-5ce16c205a85"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "cf8caeee-3886-5679-8b51-347ac1f8a081"
+              }
+            ]
+          },
+          {
+            "uuid": "5d370b2f-c917-5985-a65a-49e0348ae472",
+            "title": "cm-7 :: Kyverno Admission Controller",
+            "description": "Alle Rules bestanden: kyv-drop-all-caps, kyv-no-hostpath",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kyverno Admission Controller"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "cm-7_obj",
+              "description": "Assessment Objective zu CM-7",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "cm-7"
+                }
+              ],
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "44cf807d-24bf-5ba7-b4d5-fac0d15200d4"
+              },
+              {
+                "observation-uuid": "d55fdd35-1e98-56e5-9192-3c055a8f982d"
+              },
+              {
+                "observation-uuid": "8fdc21ee-d133-537e-b08e-75646018fddd"
+              },
+              {
+                "observation-uuid": "b5aa9069-5cf0-58f8-873d-0678ef249f24"
+              }
+            ]
+          },
+          {
+            "uuid": "817902ec-328d-5adc-a7fa-309225ef3372",
+            "title": "cm-7.5 :: Kyverno Admission Controller",
+            "description": "Fehlgeschlagene Rules: kyv-signed-images",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kyverno Admission Controller"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "cm-7.5_obj",
+              "description": "Assessment Objective zu CM-7.5",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "cm-7.5"
+                }
+              ],
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "8a6a8957-9470-5449-ab39-5ce16c205a85"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "30031adb-b80f-53a6-8e7a-8ab3c3a1d6db"
+              }
+            ]
+          },
+          {
+            "uuid": "7182ac08-0fe6-5fc9-a06a-275986674054",
+            "title": "sc-39 :: Kyverno Admission Controller",
+            "description": "Alle Rules bestanden: kyv-drop-all-caps, kyv-require-non-root",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kyverno Admission Controller"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "sc-39_obj",
+              "description": "Assessment Objective zu SC-39",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "sc-39"
+                }
+              ],
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "44cf807d-24bf-5ba7-b4d5-fac0d15200d4"
+              },
+              {
+                "observation-uuid": "d55fdd35-1e98-56e5-9192-3c055a8f982d"
+              },
+              {
+                "observation-uuid": "91e56e96-a9ad-53c9-9b43-bb43cb6461b8"
+              },
+              {
+                "observation-uuid": "871a819b-4314-5ead-91bb-70cc229037f8"
+              }
+            ]
+          },
+          {
+            "uuid": "c38ee908-f421-51a2-bb5c-1383f48e12a9",
+            "title": "si-3 :: Kyverno Admission Controller",
+            "description": "Alle Rules bestanden: kyv-resource-limits",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kyverno Admission Controller"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "si-3_obj",
+              "description": "Assessment Objective zu SI-3",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "si-3"
+                }
+              ],
+              "status": {
+                "state": "satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "f2850b33-21fc-55f0-8390-9f50d070a73a"
+              },
+              {
+                "observation-uuid": "36c93c08-1f64-5506-8fcf-ab52d262502c"
+              }
+            ]
+          },
+          {
+            "uuid": "1080867b-7974-5d78-884c-013466c02688",
+            "title": "si-7 :: Kyverno Admission Controller",
+            "description": "Fehlgeschlagene Rules: kyv-signed-images",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Kyverno Admission Controller"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "si-7_obj",
+              "description": "Assessment Objective zu SI-7",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "si-7"
+                }
+              ],
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "42f0042c-6825-5fe9-8324-226676461733"
+              },
+              {
+                "observation-uuid": "5086cb3b-6ecc-55e2-bb55-d9ff2f62383e"
+              },
+              {
+                "observation-uuid": "8a6a8957-9470-5449-ab39-5ce16c205a85"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "a7deb8a7-94fb-5c43-b011-d1a7dba721d5"
+              }
+            ]
+          },
+          {
+            "uuid": "6fdcb465-745b-586f-94c8-3219ef6dd7b7",
+            "title": "ac-3 :: Pod Security Admission",
+            "description": "Fehlgeschlagene Rules: psa-restricted-enforce",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Pod Security Admission"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "ac-3_obj",
+              "description": "Assessment Objective zu AC-3",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "ac-3"
+                }
+              ],
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "4851424b-6352-5867-bbf2-a29a58be946a"
+              },
+              {
+                "observation-uuid": "194fff6e-6922-510c-a369-4c84fab7cf21"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "c58e09ff-c528-5107-9b3a-76900f0ebe62"
+              }
+            ]
+          },
+          {
+            "uuid": "a4bbe34b-2c65-5d1a-aa36-9a92bcb37ee2",
+            "title": "ac-6.10 :: Pod Security Admission",
+            "description": "Fehlgeschlagene Rules: psa-restricted-enforce",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Pod Security Admission"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "ac-6.10_obj",
+              "description": "Assessment Objective zu AC-6.10",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "ac-6.10"
+                }
+              ],
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "4851424b-6352-5867-bbf2-a29a58be946a"
+              },
+              {
+                "observation-uuid": "194fff6e-6922-510c-a369-4c84fab7cf21"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "3249255c-e845-505f-a5db-27299028776d"
+              }
+            ]
+          },
+          {
+            "uuid": "1476b899-58d0-5251-9b86-f1de50092f7b",
+            "title": "cm-6 :: Pod Security Admission",
+            "description": "Fehlgeschlagene Rules: psa-restricted-enforce",
+            "props": [
+              {
+                "name": "assessed-component",
+                "ns": "https://cyberlab.local/ns/oscal",
+                "value": "Pod Security Admission"
+              }
+            ],
+            "target": {
+              "type": "objective-id",
+              "target-id": "cm-6_obj",
+              "description": "Assessment Objective zu CM-6",
+              "props": [
+                {
+                  "name": "control-id",
+                  "ns": "https://cyberlab.local/ns/oscal",
+                  "value": "cm-6"
+                }
+              ],
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "4851424b-6352-5867-bbf2-a29a58be946a"
+              },
+              {
+                "observation-uuid": "194fff6e-6922-510c-a369-4c84fab7cf21"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "7776fa8b-aa16-57d8-86d2-98bd1424d881"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

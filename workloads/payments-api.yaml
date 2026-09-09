@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api
+  namespace: prod-payments
+  labels: { app: payments-api }
+spec:
+  replicas: 1                       # bewusst 1: Kyverno legt PolicyReports je Pod
+                                    # an, das haelt die Evidenz uebersichtlich
+  selector:
+    matchLabels: { app: payments-api }
+  template:
+    metadata:
+      labels: { app: payments-api }
+    spec:
+      nodeSelector: { zone: payments }
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: dockerhub
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
+        fsGroup: 101
+        seccompProfile: { type: RuntimeDefault }
+      containers:
+        - name: api
+          image: docker.io/labuser/payments-api:1.0.0    # cosign-signiert
+          ports: [{ containerPort: 8080 }]
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            privileged: false
+            capabilities: { drop: ["ALL"] }
+            seccompProfile: { type: RuntimeDefault }
+          resources:
+            requests: { cpu: "50m",  memory: "64Mi" }
+            limits:   { cpu: "500m", memory: "256Mi" }
+          volumeMounts:
+            - { name: tmp,       mountPath: /tmp }
+            - { name: nginx-run, mountPath: /var/run }
+            - { name: cache,     mountPath: /var/cache/nginx }
+      volumes:
+        - { name: tmp,       emptyDir: {} }
+        - { name: nginx-run, emptyDir: {} }
+        - { name: cache,     emptyDir: {} }
+
